@@ -8,22 +8,14 @@ db =SQLAlchemy()
 
 def create_app():
 
-    app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'sam' 
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
-    # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    # app.config['MYSQL_HOST'] = 'comp-server.uhi.ac.uk'
-    # app.config['MYSQL_USER'] = 'pe19016467'
-    # app.config['MYSQL_PASSWORD'] = 'alannazimbehl'
-    # app.config['MYSQL_DB'] = 'pe19016467'
-    engine = create_engine('sqlite:///db.sqlite')
-    session = Session(bind=engine)
-    
+    app = Flask(__name__)    
+    app.config.from_object("backend.config.Config")
     db.init_app(app)
-
+    
     @app.route('/')
-    @app.route('/login')
-    def home():
-        return render_template('index.html', title='Login Page')
+    @app.route('/logs', methods=['GET', 'POST'])
+    def login():
+        hello = {"name": "sam", "age": "12"}
+        return hello
 
     return app
