@@ -7,7 +7,9 @@ from sqlalchemy.ext.declarative import declarative_base
 from werkzeug.security import generate_password_hash
 from werkzeug.security import check_password_hash
 from . import db
+from dataclasses import dataclass
 
+@dataclass
 class Users(UserMixin, db.Model):
 
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
@@ -20,11 +22,22 @@ class Users(UserMixin, db.Model):
     contact = db.Column(db.String(255))
     # user = db.relationship('User', backref='user')
 
+    def __init__(self):
+        db.create_all()
+
     def checkPassword(self, password):
        return check_password_hash(self.password_hash, password)
 
     def setPassword(self, password):
         self.password_hash = generate_password_hash(password)
+    
+    def __repr__(self):
+        return f"id={self.id}, usertype={self.usertype}, firstname={self.firstname}, lastname={self.surname}, email={self.email}, address={self.address}, contact={self.contact}"
+
+    def serialize(self):
+        return {"id": self.id,
+                "usertype": self.usertype
+                }
 
 # class Medicine(db.Model):
 #     __tablename__ = 'medicine'

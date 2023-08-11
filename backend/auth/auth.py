@@ -8,8 +8,11 @@ from datetime import datetime, timedelta, timezone
 
 auth = Blueprint("auth", __name__)
 
+
+
 @auth.route('/login', methods=['POST', 'GET'])
 def login():
+
     # email = request.json.get("email", None)
     # password = request.json.get("password", None)
 
