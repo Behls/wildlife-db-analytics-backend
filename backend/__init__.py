@@ -1,8 +1,7 @@
-from flask import Flask, request ,render_template, url_for
+from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import Session
-from sqlalchemy import create_engine
-from flask_login import LoginManager
+import json
+from datetime import datetime, timedelta, timezone
 
 db =SQLAlchemy()
 
@@ -17,5 +16,8 @@ def create_app():
     def login():
         hello = {"name": "sam", "age": "12"}
         return hello
+    
+    from backend.api.api import api 
+    app.register_blueprint(api, url_prefix='/api')
 
     return app
