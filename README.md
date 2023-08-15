@@ -8,7 +8,7 @@ This project uses a local host within the postgresql database ecosystem. It can 
 
 **Once installation begins, you will be asked to create a user/master login details and password. Note these down as they are needed to connect to the database**
 
--pgAdmin has built in psql tool support for running command line instructions incase the terminal on mac or cmd on windows doesnt recognise the psql command. 
+- pgAdmin has built in psql tool support for running command line instructions incase the terminal on mac or cmd on windows doesnt recognise the psql command. 
 
 **creating a new database**
 1. Once pgadmin 4 is loaded, right click on the sidebar on the option PostgreSQL, select create, then database.
