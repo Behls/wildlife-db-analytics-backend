@@ -1,6 +1,6 @@
-#Backend Service
+# Backend Service
 
-##pgAdmin 4 & PostgreSQL
+## pgAdmin 4 & PostgreSQL
 
 This project uses a local host within the postgresql database ecosystem. It can be managed using pgAdmin. The following applications should be installed:
 - [pgAdmin](https://www.pgadmin.org/download/)
@@ -208,7 +208,7 @@ ALTER TABLE ONLY public.users
 ```
 
 
-##Project Installation
+## Project Installation
 
 1. Clone the repository with the following command:
 ```
@@ -250,7 +250,7 @@ if __name__ == '__main__':
 
 ```
 
-##API Get Requests
+## API Get Requests
 - API endpoints can be called using postman with the servers local host as the base url attaching one of the following endpoints. 
 An example GET request would be:
 
