@@ -10,10 +10,15 @@ def create_app():
     app = Flask(__name__)    
     app.config.from_object("backend.config.Config")
     db.init_app(app)
+
+    from .model import Species
     
     @app.route('/')
     @app.route('/logs', methods=['GET', 'POST'])
     def home():
+        addspecies = Species("hedgehog", "mammal");
+        db.session.add(addspecies)
+        db.session.commit()
         return redirect(url_for('auth.login'))
     
     from backend.api.api import api 

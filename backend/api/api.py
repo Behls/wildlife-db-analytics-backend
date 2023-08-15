@@ -157,3 +157,29 @@ def getAllNotes():
     else:
         response = {"notes": "notes_not_found"}
         return response
+    
+@api.route('/medicine/<int:id>', methods=['GET'])
+def getMedicineByID(id):
+    getMedicine = Medicine.query.get(id)
+    if(getMedicine):
+        response = jsonify(getMedicine.serialize())
+        return response
+    else:
+        response = {"medicines": "medicine_not_found"}
+        return response
+    
+
+@api.route('/medicine', methods=['GET'])
+def getMedicines():
+    getMedicine = Notes.query.all()
+    data = []
+    response = ""
+    if(getMedicine):
+        for med in getMedicine:
+            response = med.serialize()
+            data.append(response)
+            alist = jsonify(data)
+        return alist
+    else:
+        response = {"medicines": "medicine_not_found"}
+        return response

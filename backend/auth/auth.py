@@ -5,10 +5,7 @@ from ..model import Users
 from backend import db
 from datetime import datetime, timedelta, timezone
 
-
 auth = Blueprint("auth", __name__)
-
-
 
 @auth.route('/login', methods=['POST', 'GET'])
 def login():
